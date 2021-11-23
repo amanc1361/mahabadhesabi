@@ -1,7 +1,7 @@
 import Image from 'next/image'
 export const getServerSideProps= async() =>  {
   
-    const res= await fetch("https://www.mdhrc.ir/api/students")
+    const res= await fetch('https://www.mdhrc.ir/api/students')
     const data=await res.json()
    
     return {
@@ -9,10 +9,11 @@ export const getServerSideProps= async() =>  {
     }
 }
 const showstudent=( {student} ) => {
-    return <div dir="rtl">
+    return  <div dir='rtl' >
          
-  <table className="table table-striped">
-    ...  <thead>
+  <table className='table table-striped'>
+      <thead>
+        <tr key='th1'>
               <th>ردیف</th>
               <th>نام</th>
               <th>نام خانوادگی</th>
@@ -29,11 +30,11 @@ const showstudent=( {student} ) => {
               <th>تصویر شناسنامه </th>
               <th>اشتغال به تحصیل</th>
               <th> فیش واریزی</th>
+              </tr>
     </thead>
     <tbody>
            {student.map((item,index) => (
-                <tr key={item.id}>
-                <td>{index+1}</td>    
+                <tr key={index}><td>{index+1}</td>    
                 <td>{item.name}</td>
                 <td>{item.family}</td>
                 <td>{item.fathername}</td>
@@ -45,10 +46,10 @@ const showstudent=( {student} ) => {
                 <td>{item.shad}</td>
                 <td>{item.favirotes}</td>
                 <td>{item.anjomans}</td>
-                <td><Image  alt="عکس پرسنلی" src={"https://mdhrc.ir/images/"+item.nationalcode+"/"+item.image} height={500} width={500} ></Image></td>
-                <td><Image alt="عکس پرسنلی" src={"https://mdhrc.ir/images/"+item.nationalcode+"/"+item.shenasnameh} height={500} width={500} ></Image></td>
-                <td><Image alt="عکس پرسنلی" src={"https://mdhrc.ir/images/"+item.nationalcode+"/"+item.certschool} height={500} width={500} ></Image></td>
-                <td><Image  alt="عکس پرسنلی" src={"https://mdhrc.ir/images/"+item.nationalcode+"/"+item.fish} height={500} width={500} ></Image></td>
+                <td><Image  alt={'pic'} src={'https://mdhrc.ir/images/'+item.nationalcode+'/'+item.image} height={500} width={500} ></Image></td>
+                <td><Image alt={'pic'} src={'https://mdhrc.ir/images/'+item.nationalcode+'/'+item.shenasnameh} height={500} width={500} ></Image></td>
+                <td><Image alt={'pic'} src={'https://mdhrc.ir/images/'+item.nationalcode+'/'+item.certschool} height={500} width={500} ></Image></td>
+                <td><Image  alt={'pic'} src={'https://mdhrc.ir/images/'+item.nationalcode+'/'+item.fish} height={500} width={500} ></Image></td>
                 </tr>
            ))}
     </tbody>
