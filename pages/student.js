@@ -58,10 +58,10 @@ useEffect(() => {
                 <td>{item.shad}</td>
                 <td>{item.favirotes}</td>
                 <td>{item.anjomans}</td>
-                <td><Image  alt={'pic'} src={'/images/'+item.nationalcode+'/'+item.image} height={500} width={500} ></Image></td>
-                <td><Image alt={'pic'} src={'/images/'+item.nationalcode+'/'+item.shenasnameh} height={500} width={500} ></Image></td>
-                <td><Image alt={'pic'} src={'/images/'+item.nationalcode+'/'+item.certschool} height={500} width={500} ></Image></td>
-                <td><Image  alt={'pic'} src={'/images/'+item.nationalcode+'/'+item.fish} height={500} width={500} ></Image></td>
+                <td><Image  alt={'pic'} src={'https://mdhrc.ir/images/'+item.nationalcode+'/'+item.image} height={500} width={500} ></Image></td>
+                <td><Image alt={'pic'} src={'https://mdhrc.ir/images/'+item.nationalcode+'/'+item.shenasnameh} height={500} width={500} ></Image></td>
+                <td><Image alt={'pic'} src={'https://mdhrc.ir/images/'+item.nationalcode+'/'+item.certschool} height={500} width={500} ></Image></td>
+                <td><Image  alt={'pic'} src={'https://mdhrc.ir/images/'+item.nationalcode+'/'+item.fish} height={500} width={500} ></Image></td>
                 </tr>
            ))}
     </tbody>

@@ -1,6 +1,6 @@
 module.exports = {
   reactStrictMode: true,
   images: {
-    domains: ['mdhrc.ir'],
+    domains: ['localhost','https://mdhrc.ir'],
   },
 }
