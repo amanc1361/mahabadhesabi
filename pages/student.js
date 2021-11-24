@@ -4,8 +4,8 @@ import Axios from 'axios'
 
 Axios.defaults.baseURL = "https://www.mdhrc.ir/api";
 
-const showstudent=() => {
-   const getdata= async() =>  {
+const Showstudent=() => {
+   const Getdata= async() =>  {
  
     Axios.get("/students").then(res=> {
         console.log(res)
@@ -15,7 +15,7 @@ const showstudent=() => {
     
 }
 useEffect(() => {
-  getdata()
+  Getdata()
  
 }, [])
   const[liststudent,setListstudent]=useState([])
@@ -70,4 +70,4 @@ useEffect(() => {
 </div>
     
 }
-export default showstudent
+export default Showstudent
