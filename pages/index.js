@@ -1,5 +1,5 @@
 
-import Head from 'next/head'
+
 import Axios from 'axios' 
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';

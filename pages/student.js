@@ -1,15 +1,27 @@
 import Image from 'next/image'
-export const getServerSideProps= async() =>  {
-  
-    const res= await fetch('https://www.mdhrc.ir/api/students')
-    const data=await res.json()
+import {  useEffect, useState } from 'react'
+import Axios from 'axios' 
+
+Axios.defaults.baseURL = "https://www.mdhrc.ir/api";
+
+const showstudent=() => {
+   const getdata= async() =>  {
+ 
+    Axios.get("/students").then(res=> {
+        console.log(res)
+        setListstudent(res.data.data)
+    })
    
-    return {
-        props:{student:data.data}
-    }
+    
 }
-const showstudent=( {student} ) => {
+useEffect(() => {
+  getdata()
+ 
+}, [])
+  const[liststudent,setListstudent]=useState([])
     return  <div dir='rtl' >
+   {
+     liststudent.length==0 ? <div><p>هیچ اطلاعاتی برای نمایش وجود ندارد.</p></div>:
          
   <table className='table table-striped'>
       <thead>
@@ -33,7 +45,7 @@ const showstudent=( {student} ) => {
               </tr>
     </thead>
     <tbody>
-           {student.map((item,index) => (
+           {liststudent.map((item,index) => (
                 <tr key={index}><td>{index+1}</td>    
                 <td>{item.name}</td>
                 <td>{item.family}</td>
@@ -54,6 +66,7 @@ const showstudent=( {student} ) => {
            ))}
     </tbody>
   </table>
+}
 </div>
     
 }
