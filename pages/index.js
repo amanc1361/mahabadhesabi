@@ -11,7 +11,7 @@ import {  useState } from 'react'
 
 Axios.defaults.baseURL = "https://www.mdhrc.ir/api";
 const Home = () => {
-class Errors {
+class Error {
     name=false
     family=false
     fathername=false
@@ -59,12 +59,12 @@ class Errors {
   const[grades,setGrades]=useState([{"title":"ابتدایی","value":1}]);
   const[gradecategoried,setGradeCategory]=useState(1);
   const[categoryvalue,setCategoryvalue]=useState(1);
-  const[listfavirotes,setlistFavirotes]=useState([''])
+  const[listfavirotes,setlistFavirotes]=useState([""])
   const[listanjoman,setListanjomans]=useState([""])
   const[defaultgrade,setDefaultGrade]=useState("ابتدایی")
   const[defaultbase,setDefaultBase]=useState("اول")
   const[isloading,setIsloading]=useState(false)
-  const[errors,seterrors]=useState()
+  const[errors,seterrors]=useState(new Error)
   const[favirotes,setFavirotes]=useState( [
     {"title":"نقاشی","value":1},
     {"title":"ریاضی","value":2},
@@ -75,7 +75,7 @@ class Errors {
   ])
  
   const[anjomans,setAnjomans]=useState([{"title":"","value":0}]);
-  const[name,setname]=useState("")
+  const[name,setName]=useState("")
   const[family,setFamily]=useState("")
   const[fathername,setFathername]=useState("")
   const[nationalcode,setNationlacode]=useState("")
@@ -179,7 +179,7 @@ class Errors {
    var iserr=false
    errors.clear()
    seterrors(errors)
-   console.log(defaultgrade)
+   
     if (name.length==0) {
        errors.name=true
        iserr=true
@@ -235,12 +235,12 @@ class Errors {
       }
     seterrors(errors)
     setGradeCategory(1)
-    console.log(iserr)
+  
     return iserr
 
   }
   const cleardata=() => {
-    setname('')
+   
     setFamily('')
     setFathername('')
     setNationlacode('')
@@ -254,7 +254,6 @@ class Errors {
   const addfavirote= (fav,checked )=>
    {
      errors.favirote=false
-     
      seterrors(errors)
      setGradeCategory(7)
     var index 
@@ -318,7 +317,7 @@ class Errors {
       anjomanstring+=item+","
     }
     var formdata =new FormData()
-    console.log(fvstring)
+   
    
     // try 
     // {
@@ -338,7 +337,7 @@ class Errors {
      formdata.append("base",defaultbase)
      
      formdata.append("category",defaultgrade)
-     console.log(defaultgrade)
+     
      formdata.append("schoolname",schoolname)
      formdata.append("shad",shadnumber.toString())
      
@@ -402,6 +401,9 @@ class Errors {
   const handlebase=(e) => {
     setDefaultBase(e.currentTarget.value)
   }
+  const changeName=(value) => {
+    setName(value)
+  }
 
   const changevalue=(value) =>
   {
@@ -439,9 +441,9 @@ class Errors {
             <div className="row g-3">
               <div className="col-sm-4">
                 <label htmlFor="name" className="form-label">نام</label>
-                <input type="text" className={`form-control ${errors?.name ? 'is-invalid' : ''}`} id="name"  placeholder="" value={name} required
+                <input type="text" className={`form-control ${errors?.name ? 'is-invalid' : ''}`} id="name"  placeholder=""  required
                 
-                onChange={e=> {setname(e.target.value); errors.name=false}}
+                onChange={(e)=> {changeName(e.target.value);}}
                 />
                 <div className="invalid-feedback">
                نام خود را به صورت صحیح وارد نمایید
